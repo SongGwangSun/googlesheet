@@ -3,7 +3,7 @@
 // =============================================
 const CONFIG = {
   // 1) Google Apps Script 웹 앱 배포 후 발급받은 URL
-  SCRIPT_URL: 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL',
+  SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyhGZnQi4Znnk4EzuvJCO0eQyp-AVQng8xOz0djBs9UiGxoSlML8jVZXVmHkusPu-Qq/exec',
 
   // 2) 회사 정보 (개인정보 고지 및 로고에 표시)
   COMPANY_NAME:   '(주)회사명',
