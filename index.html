@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>추가 정보 신청</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo" id="logo-badge">
+        <span id="logo-text">회사명</span>
+      </div>
+      <h1 class="main-title">추가 정보 신청</h1>
+      <p class="subtitle">관심 제품 또는 수업에 대한 자세한 안내를 받아보세요.</p>
+    </header>
+
+    <main class="form-card" id="form-section">
+      <form id="contact-form" novalidate>
+
+        <!-- 스팸 방지 허니팟 -->
+        <div class="honeypot" aria-hidden="true">
+          <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+          <label for="name">이름 <span class="required">*</span></label>
+          <input type="text" id="name" name="name" placeholder="홍길동" required maxlength="50" autocomplete="name">
+          <span class="error-msg" id="name-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">전화번호 <span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required maxlength="13" autocomplete="tel">
+          <span class="help-text">형식: 010-XXXX-XXXX</span>
+          <span class="error-msg" id="phone-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">이메일 <span class="optional">(선택)</span></label>
+          <input type="email" id="email" name="email" placeholder="example@email.com" maxlength="100" autocomplete="email">
+          <span class="error-msg" id="email-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="product">관심 제품/수업 <span class="required">*</span></label>
+          <select id="product" name="product" required>
+            <option value="">-- 선택해주세요 --</option>
+          </select>
+          <input
+            type="text"
+            id="product-custom"
+            name="product-custom"
+            placeholder="관심 제품/수업명을 직접 입력해주세요"
+            maxlength="100"
+            style="display:none; margin-top:8px"
+          >
+          <span class="error-msg" id="product-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="inquiry">추가 문의사항 <span class="optional">(선택)</span></label>
+          <textarea id="inquiry" name="inquiry" rows="4" placeholder="궁금한 점이나 요청 사항을 자유롭게 입력해주세요." maxlength="500"></textarea>
+          <span class="char-count"><span id="inquiry-count">0</span>/500</span>
+        </div>
+
+        <!-- 개인정보 동의 -->
+        <div class="privacy-section">
+          <h3 class="privacy-title">개인정보 수집·이용 동의</h3>
+          <div class="privacy-table-wrap">
+            <table class="privacy-table">
+              <tbody>
+                <tr>
+                  <th>수집 항목</th>
+                  <td>이름, 전화번호, 이메일(선택), 관심 제품/수업명</td>
+                </tr>
+                <tr>
+                  <th>수집 목적</th>
+                  <td>제품/수업 안내 및 상담, 마케팅·홍보 자료 발송</td>
+                </tr>
+                <tr>
+                  <th>보유 기간</th>
+                  <td>수집일로부터 1년 (동의 철회 시 즉시 파기)</td>
+                </tr>
+                <tr>
+                  <th>동의 거부 권리</th>
+                  <td>동의를 거부할 수 있으며, 거부 시 서비스 이용에 제한이 있을 수 있습니다.</td>
+                </tr>
+                <tr>
+                  <th>문의처</th>
+                  <td>
+                    <span class="dyn-company"></span> /
+                    <span class="dyn-phone"></span> /
+                    <span class="dyn-email"></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="privacy-notice">※ 본인은 위 내용을 충분히 이해하였으며, 개인정보 수집·이용에 동의합니다.</p>
+          <label class="consent-label">
+            <input type="checkbox" id="consent" name="consent" required>
+            <span>개인정보 수집·이용에 동의합니다. <span class="required">*</span></span>
+          </label>
+          <span class="error-msg" id="consent-error"></span>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">
+          <span class="btn-text">신청하기</span>
+          <span class="btn-loading" style="display:none">
+            <span class="spinner"></span>전송 중...
+          </span>
+        </button>
+
+      </form>
+    </main>
+
+    <!-- 제출 완료 화면 -->
+    <div class="success-card" id="success-section" style="display:none">
+      <div class="success-icon" aria-hidden="true">
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="36" cy="36" r="36" fill="#dcfce7"/>
+          <path d="M22 36L31 45L50 27" stroke="#16a34a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 class="success-title">신청이 완료되었습니다!</h2>
+      <p class="success-msg">소중한 관심에 감사드립니다.<br>빠른 시일 내에 연락드리겠습니다.</p>
+      <button class="another-btn" id="another-btn">다른 정보 신청하기</button>
+    </div>
+
+    <footer class="footer">
+      <p>© <span id="footer-year"></span> <span class="dyn-company"></span>. All rights reserved.</p>
+      <p class="footer-sub">개인정보 처리방침에 따라 수집된 정보는 안전하게 관리됩니다.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
